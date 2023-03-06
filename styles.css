@@ -1,0 +1,30 @@
+
+body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #989DA5;
+  }
+  
+
+.choiceButtons{
+    display: flex;
+    border: .4rem solid black;
+    background-color: #927D7C;    ;
+    margin: 3rem 20rem;
+    justify-content: space-around;
+}
+
+.choiceButtons button
+{
+    background-color: #45536E;
+    padding: 1rem .5rem;
+    margin: 1rem;
+    border: .4rem solid black;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    width: 10rem;
+    color: #eff1ef;
+    text-shadow: 0 0 .5rem #84658A;
+    text-align: center;
+}
