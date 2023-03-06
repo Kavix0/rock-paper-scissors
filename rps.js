@@ -11,10 +11,12 @@ function getComputerChoice(){
     }
 }
 
-function playRound(playerChoice, computerChoice){
-    playerChoice = playerChoice.toLowerCase();
+function playRound(e){
+    playerChoice = (e.currentTarget.id).toLowerCase();
 
-    return getRoundWinner(playerChoice, computerChoice);
+    let winner = getRoundWinner(playerChoice, getComputerChoice());
+    console.log(winner);
+    return winner;
 }
 
 function getRoundWinner(playerChoice, computerChoice){
@@ -99,3 +101,7 @@ function game()
     console.log(getGameWinner(score));
 }
 
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => {
+    button.addEventListener('click',playRound);
+});
