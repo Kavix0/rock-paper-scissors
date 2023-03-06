@@ -5,117 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="rps.js"></script>
     <title>Rock Paper Scissors!</title>
 </head>
 <body>
-    <script>
-        function getComputerChoice(){
-            let choice = Math.floor((Math.random() * 3));
+<div class = "gameWindow">
 
-            switch(choice){
-                case 0:
-                    return 'rock';
-                case 1:
-                    return 'paper';
-                case 2:
-                    return 'scissors';
-            }
-        }
+    <div class = "score">0</div>
+    <div class = "separator"></div>
+    <div class = "score">0</div>
+    <div class = "choiceButtons">
 
-        function playRound(playerChoice, computerChoice){
-            playerChoice = playerChoice.toLowerCase();
+        <button id="rock">
+        <img class = "gameImage" src="images/noun-rock-3575783.png" alt = "Rock Image">
+        <br>
+        Rock
+        </button>
 
-            return getRoundWinner(playerChoice, computerChoice);
-        }
+        <button id="paper">
+        <img class = "gameImage" src="images/noun-paper-5547609.png" alt = "Paper Image">
+        <br>
+        Paper
+        </button>
 
-        function getRoundWinner(playerChoice, computerChoice){
-            while(true){
-                switch(playerChoice){
-                    case 'rock':
-                        switch(computerChoice){
-                            case 'rock':
-                            return 'Tie Round! Rock vs Rock';
-                            case 'paper':
-                            return 'You Lose! Rock loses against Paper';
-                            case 'scissors':
-                            return 'You Win! Rock beats Scissors';
-                        }
-                    case 'paper':
-                        switch(computerChoice){
-                            case 'rock':
-                            return 'You Win! Paper beats Rock';
-                            case 'paper':
-                            return 'Tie Round! Paper vs Paper';
-                            case 'scissors':
-                            return 'You Lose! Paper loses against Scissors';
-                        }
-                    case 'scissors':
-                        switch(computerChoice){
-                            case 'rock':
-                            return 'You Lose! Scissors loses against Rock';
-                            case 'paper':
-                            return 'You Win! Scissors beats Paper';
-                            case 'scissors':
-                            return 'Tie Round! Scissors vs Scissors';
-                        }
-                    default:
-                    console.log('Sorry, you must enter a valid choice (Rock, Paper, Scissors)');
-                    playerChoice = getPlayerChoice();
-                }
-         }
-        }
+        <button id="scissors">
+        <img class = "gameImage" src="images/noun-scissors-180853.png" alt = "Scissors Image">
+        <br>
+        Scissors
+        </button>
 
-        function getPlayerChoice(){
-            return window.prompt('Please enter Rock, Paper, or Scissors');
-        }
-
-        function getRoundScore(roundResult){
-            console.log(roundResult[4]);
-            switch(roundResult[4]){
-                case('W'):
-                    return 1;
-                case('L'):
-                    return -1;
-                case('R'):
-                    return 0;
-            }
-        }
-
-
-        function getGameWinner(score){
-            switch(true){
-                case (score >= 1):
-                    return 'Congratulations! You are the greatest Rock Paper Scissor player in the world!';
-                case (score <= -1):
-                    return 'Oh no.... the computer beat you! You died.';
-                default:
-                    return 'You are evenly matched.... try another round to see if you are skilled enough to win!';
-            }
-        }
-
-        function game()
-        {
-            console.log("It's time.... to play some Rock Paper Scissors!");
-
-            let roundResult = '';
-            let score = 0;
-            
-            for(let i = 0; i < 5; i++){
-                roundResult = playRound(getPlayerChoice(), getComputerChoice());
-                console.log(roundResult);
-
-                score += getRoundScore(roundResult);   //If player is winner, true. Else false.
-            }
-
-            console.log(getGameWinner(score));
-        }
-
-
-    </script>
-<div class = "choiceButtons">
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+    </div>
 </div>
-</body>
+</body> 
 </html>
