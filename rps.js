@@ -1,5 +1,6 @@
 let score = 0;
 let compScore = 0;
+const header = document.getElementById('header');
 const compButton = document.getElementById('computerChoice');
 
 function getComputerChoice(){
@@ -16,6 +17,14 @@ function getComputerChoice(){
 }
 
 function playRound(e){
+    if(score == 5 || compScore == 5){
+        score = 0;
+        compScore = 0;
+        document.getElementById('score').textContent = score;
+        document.getElementById('compScore').textContent = compScore;
+        header.textContent = "Please make your selection!"
+    }
+
     playerChoice = (e.currentTarget.id).toLowerCase();
 
     e.currentTarget.classList.add('clicked');
@@ -47,6 +56,12 @@ function playRound(e){
     let winner = getRoundWinner(playerChoice, computerChoice);
     console.log(winner);
     updateRoundScore(winner);
+
+    if(score == 5){
+        header.textContent = "You win!! You're the greatest Rock Paper Scissors player in the world!"
+    }else if(compScore ==5){
+        header.textContent = "Wow..... you lost against the computer, way to go."
+    }
     return ;
 }
 
