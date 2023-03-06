@@ -22,7 +22,7 @@ function playRound(e){
         compScore = 0;
         document.getElementById('score').textContent = score;
         document.getElementById('compScore').textContent = compScore;
-        header.textContent = "Please make your selection!"
+        header.textContent = "Please make your selection! First to 5 wins :)"
     }
 
     playerChoice = (e.currentTarget.id).toLowerCase();
