@@ -10,24 +10,56 @@ body,html {
     align-items:center; 
   }
   
+.scoreWindow{
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem;
+
+}
+
+.score{
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: .4rem solid black;
+    background-color: #45536E;
+    padding: .5rem;
+    color: #eff1ef;
+    font-size: 1.5rem;
+    flex: 1;
+    aspect-ratio: 1/1;
+}
+
+.separator{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 .2rem;
+    flex: 1;
+}
 
 .choiceButtons{
     display: flex;
     border: .4rem solid black;
-    margin-top: 5rem;
+    margin-top: 3rem;
     background-color: #927D7C;
-    width: 60vw;
+    align-self: center;
     justify-content: space-around;
 }
 
 .choiceButtons button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
     background-color: #45536E;
-    padding: 1rem .5rem;
+    padding: .5rem .5rem;
     margin: 1.25rem;
     border: .4rem solid black;
     border-radius: .5rem;
     font-size: 1.5rem;
-    width: 45vw;
     color: #eff1ef;
     text-shadow: 0 0 .5rem #84658A;
     text-align: center;
@@ -36,6 +68,4 @@ body,html {
 .gameImage{
     max-width: 15vw;
     max-height: 15vh;
-    margin-bottom: .2rem;
-    /*background-color: rgba(239, 241, 239, .15);*/
 }
