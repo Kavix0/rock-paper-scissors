@@ -96,16 +96,19 @@ body {
     color: #eff1ef;
     text-shadow: 0 0 .5rem #84658A;
     text-align: center;
-    transition: all .07s ease;
+    transition: all .15s ease;
 }
 
-.choiceButtons button:hover
-{
-    transform: scale(1.05);
+.choiceButtons button:hover{
     border-color: #ffc600;
     box-shadow: 0 0 1rem #ffc600;
 }
 
+.clicked{
+    transform: scale(1.15);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
 .gameImage{
     max-width: 15vw;
     max-height: 15vh;

@@ -1,3 +1,7 @@
+let score = 0;
+let compScore = 0;
+
+
 function getComputerChoice(){
     let choice = Math.floor((Math.random() * 3));
 
@@ -14,9 +18,11 @@ function getComputerChoice(){
 function playRound(e){
     playerChoice = (e.currentTarget.id).toLowerCase();
 
+    e.currentTarget.classList.add('clicked');
     let winner = getRoundWinner(playerChoice, getComputerChoice());
     console.log(winner);
-    return winner;
+    updateRoundScore(winner);
+    return ;
 }
 
 function getRoundWinner(playerChoice, computerChoice){
@@ -60,18 +66,20 @@ function getPlayerChoice(){
     return window.prompt('Please enter Rock, Paper, or Scissors');
 }
 
-function getRoundScore(roundResult){
-    console.log(roundResult[4]);
+function updateRoundScore(roundResult){
     switch(roundResult[4]){
         case('W'):
-            return 1;
+            score += 1;
+            console.log("Player score: " + score);
+            return;
         case('L'):
-            return -1;
+            compScore += 1;
+            console.log("Computer score: " + compScore);
+            return;
         case('R'):
-            return 0;
+            return;
     }
 }
-
 
 function getGameWinner(score){
     switch(true){
@@ -89,19 +97,26 @@ function game()
     console.log("It's time.... to play some Rock Paper Scissors!");
 
     let roundResult = '';
-    let score = 0;
     
     for(let i = 0; i < 5; i++){
         roundResult = playRound(getPlayerChoice(), getComputerChoice());
         console.log(roundResult);
 
-        score += getRoundScore(roundResult);   //If player is winner, true. Else false.
+        /*score += getRoundScore(roundResult);   */
     }
+}
 
-    console.log(getGameWinner(score));
+function endTransition(e){
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('clicked');
 }
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => {
     button.addEventListener('click',playRound);
-});
+})
+
+buttons.forEach(button => {
+    button.addEventListener('transitionend',endTransition);
+})
+
