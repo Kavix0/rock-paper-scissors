@@ -1,6 +1,6 @@
 let score = 0;
 let compScore = 0;
-
+const compButton = document.getElementById('computerChoice');
 
 function getComputerChoice(){
     let choice = Math.floor((Math.random() * 3));
@@ -19,7 +19,32 @@ function playRound(e){
     playerChoice = (e.currentTarget.id).toLowerCase();
 
     e.currentTarget.classList.add('clicked');
-    let winner = getRoundWinner(playerChoice, getComputerChoice());
+
+    let computerChoice = getComputerChoice();
+
+    compButton.textContent = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
+
+    let compPic = document.createElement('img'); 
+    compPic.classList.add('gameImage');
+
+    switch(computerChoice){
+        case 'rock':
+            compPic.src = "images/noun-rock-3575783.png";
+            compPic.alt = "Rock Image";
+            break;
+        case 'paper':
+            compPic.src = "images/noun-paper-5547609.png";
+            compPic.alt = "Paper Image";
+            break;
+        case 'scissors':
+            compPic.src = "images/noun-scissors-180853.png";
+            compPic.alt = "Scissors Image";
+            break;
+    }
+    
+    compButton.appendChild(compPic);
+
+    let winner = getRoundWinner(playerChoice, computerChoice);
     console.log(winner);
     updateRoundScore(winner);
     return ;
@@ -67,14 +92,17 @@ function getPlayerChoice(){
 }
 
 function updateRoundScore(roundResult){
+
     switch(roundResult[4]){
         case('W'):
             score += 1;
             console.log("Player score: " + score);
+            document.getElementById('score').textContent = score;
             return;
         case('L'):
             compScore += 1;
             console.log("Computer score: " + compScore);
+            document.getElementById('compScore').textContent = compScore;
             return;
         case('R'):
             return;
