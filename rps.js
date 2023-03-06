@@ -27,7 +27,10 @@ function playRound(e){
 
     playerChoice = (e.currentTarget.id).toLowerCase();
 
-    e.currentTarget.classList.add('clicked');
+    if(!((e.currentTarget.id == 'computerChoice')) && !(e.currentTarget.id == 'score') && !(e.currentTarget.id == 'compScore')) e.currentTarget.classList.add('clicked');
+    else return;
+
+    compButton.classList.add('clicked');
 
     let computerChoice = getComputerChoice();
 
@@ -50,7 +53,7 @@ function playRound(e){
             compPic.alt = "Scissors Image";
             break;
     }
-    
+
     compButton.appendChild(compPic);
 
     let winner = getRoundWinner(playerChoice, computerChoice);
@@ -61,6 +64,8 @@ function playRound(e){
         header.textContent = "You win!! You're the greatest Rock Paper Scissors player in the world!"
     }else if(compScore ==5){
         header.textContent = "Wow..... you lost against the computer, way to go."
+    }else {
+        header.textContent = winner;
     }
     return ;
 }
@@ -96,8 +101,7 @@ function getRoundWinner(playerChoice, computerChoice){
                     return 'Tie Round! Scissors vs Scissors';
                 }
             default:
-            console.log('Sorry, you must enter a valid choice (Rock, Paper, Scissors)');
-            playerChoice = getPlayerChoice();
+            return 'Stop clicking on me!';
         }
  }
 }
@@ -119,7 +123,7 @@ function updateRoundScore(roundResult){
             console.log("Computer score: " + compScore);
             document.getElementById('compScore').textContent = compScore;
             return;
-        case('R'):
+        case('R', ' '):
             return;
     }
 }
@@ -152,6 +156,7 @@ function game()
 function endTransition(e){
     if (e.propertyName !== 'transform') return;
     e.target.classList.remove('clicked');
+    e.target.classList.remove('computerPicked');
 }
 
 const buttons = document.querySelectorAll("button");
